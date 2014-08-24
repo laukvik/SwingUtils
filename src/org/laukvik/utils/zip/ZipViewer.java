@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2014 Morten Laukvik
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
 package org.laukvik.utils.zip;
 
 import java.io.IOException;
@@ -9,6 +26,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
+/**
+ * Displays the contents of a ZIP file using a swing application
+ *
+ *
+ * @author morten
+ */
 public class ZipViewer extends JFrame {
 
     private static final long serialVersionUID = 8798394300690156009L;
@@ -32,7 +55,11 @@ public class ZipViewer extends JFrame {
         } catch (Exception ex) {
             Logger.getLogger(ZipViewer.class.getName()).log(Level.SEVERE, null, ex);
         }
-        new ZipViewer("/Users/morten/Java/apache-maven-3.2.2/lib/aether-api-0.9.0.M2.jar");
+        if (args.length == 0) {
+            System.out.println("USAGE: ZipViewer <filename>");
+        } else {
+            new ZipViewer(args[0]);
+        }
     }
 
 }
